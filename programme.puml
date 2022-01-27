@@ -1,0 +1,63 @@
+@startuml
+
+skinparam style strictuml
+hide footbox
+
+participant programme.class as programme
+participant Ex1.class as Ex1
+participant Year.class as Year
+participant "year: Year" as year
+participant "cas: Ex1" as cas
+
+programme->Ex1 ++
+Ex1-->>cas : <<Create>> Ex1()
+return cas
+
+programme -> Year ++ : parse()
+Year -->> year : <<Create>> Year()
+return year
+
+programme -> programme ++ : showLeap(year)
+programme -> year ++ : isLeap()
+return res
+return println(res)
+
+programme -> programme ++ : showNumberDays(year)
+programme -> year ++ : length()
+return length
+return println(length)
+
+programme->cas : showPreviousLeap(year)
+
+cas->Ex1
+
+Ex1 -> year ++ : getValue()
+return val
+loop
+    Ex1->Ex1 : val = val - 1
+    Ex1->Year ++ : isLeap(val)
+    return leap
+break leap = true
+end break
+end loop
+Ex1 -> programme : println(val)
+
+programme->cas : showNextLeap()
+cas -> Ex1
+
+Ex1 -> year ++ : getValue()
+return val
+
+loop
+    Ex1->Ex1 : val = val + 1
+    Ex1->Year ++ : of(val)
+    Year->Year ++ : isLeap()
+    return true or false
+    return leap
+break leap = true
+end break
+end loop
+
+Ex1 -> programme : println(val)
+
+@enduml
