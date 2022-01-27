@@ -4,15 +4,14 @@ import Year.Year;
 
 public class Ex1
 {
-    public void showPreviousLeap(String year)
+    public void showPreviousLeap(Year year)
     {
-        Year currentYear = Year.parse(year);
         boolean leap = false;
-        for(int i = 1; i != currentYear.getValue() && !leap; i++)
+        for(int i = 1; i != year.getValue() && !leap; i++)
         {
-            if (Year.isLeap(currentYear.minusYears(i).getValue()))
+            if (Year.isLeap(year.minusYears(i).getValue()))
             {
-                System.out.println("L'année bissextile précédente était : " + currentYear.minusYears(i).toString());
+                System.out.println("L'annÃ©e bissextile prÃ©cÃ©dente Ã©tait : " + year.minusYears(i).toString());
                 leap = true;
             }
         }        
