@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+skinparam style strictuml
+hide footbox
+
+participant Ex2.class as Ex2
+participant Year.class as Year
+participant "year : Year" as year
+
+[o-> Ex2 ++ : main(args)
+Ex2 -> Year ++ : parse()
+create year
+Year -->> year : <<Create>> Year()
+return year
+
+|||
+== année bissextile prochaine \n avec la méthode d'instance __isLeap__ ==
+loop
+Ex2 -> Ex2 : i = i + 1
+Ex2 -> Year ++ : year.plusYears(i).isLeap()
+return leap = true
+end loop
+
+[<-o Ex2 : test
+
+@enduml

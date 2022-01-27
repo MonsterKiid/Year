@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam style strictuml
+
+legend top
+Diagramme de la classe Year
+end legend
+
+class Year
+{
+    + {static} MIN_VALUE = -999_999_999 : Integer {readOnly}
+    + {static} MAX_VALUE = 999_999_999 : Integer {readOnly}
+    - year : Integer {readOnly}
+    + {static} isLeap(year: Integer) : Boolean
+    + <<Create>> {static} of(isoYear: Integer) : Year
+    - <<Create>> Year(year : Integer)
+    + getValue() : Integer
+    + isLeap() : Boolean
+    + length() : Integer
+    + toString() : String
+    + isAfter(other: Year) : Boolean
+    + isBefore(other: Year) : Boolean
+    + minusYears(long: yearsToSubtract) : Year
+    + plusYears(long: yearsToAdd) : Year
+    + {static} parse(String: text) : Year
+}
+
+@enduml

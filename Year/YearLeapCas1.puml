@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+skinparam style strictuml
+hide footbox
+
+participant Ex1.class as Ex1
+participant Year.class as Year
+participant "year : Year" as year
+
+[o-> Ex1 ++ : main(args)
+Ex1 -> Year ++ : parse()
+create year
+Year -->> year : <<Create>> Year()
+return year
+|||
+== année bissextile précédente \n avec la méthode de classe __isLeap__ ==
+Ex1 -> year ++ : getValue()
+return val
+
+loop
+Ex1 -> Ex1 : val = val - 1
+Ex1 -> Year ++ : isLeap(val)
+return leap
+break leap = true
+end break
+end loop
+
+@enduml
