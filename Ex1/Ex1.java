@@ -1,19 +1,31 @@
 package Ex1;
 
-import Year.Year;
+import java.time.Year;
 
 public class Ex1
 {
     public void showPreviousLeap(Year year)
     {
         boolean leap = false;
-        for(int i = 1; i != year.getValue() && !leap; i++)
+        int val = year.getValue();
+        while (!leap)
         {
-            if (Year.isLeap(year.minusYears(i).getValue()))
-            {
-                System.out.println("L'année bissextile précédente était : " + year.minusYears(i).toString());
-                leap = true;
-            }
-        }        
+            val = val - 1;
+            leap = Year.isLeap(val);
+        }     
+        System.out.println("L'année bissextile précédente était : " + val);
+
+    }
+
+    public void showNextLeap(Year year)
+    {    
+        boolean leap = false;
+        int val = year.getValue();
+        while(!leap)
+        {
+            val = val + 1;
+            leap = Year.of(val).isLeap();
+        }
+        System.out.println("L'année bissextile prochaine est : " + val);
     }
 }
