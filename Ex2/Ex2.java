@@ -12,7 +12,7 @@ public class Ex2
                 if (year.plusYears(i).isLeap())
                 {
                     System.out.println("L'année bissextile prochaine est : " + year.plusYears(i).toString());
-                    leap = true;
+                    leap = true; 
                 }
             }
     }
